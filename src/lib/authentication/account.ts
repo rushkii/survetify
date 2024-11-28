@@ -1,4 +1,4 @@
-import { faker } from '$lib/faker';
+import { faker } from '$lib/utils';
 import type { User } from '$types';
 
 export const generateAccount = (): User => {
