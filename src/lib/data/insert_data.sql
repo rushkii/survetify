@@ -1,17 +1,24 @@
 -- SAMPLE DATA
 INSERT INTO
-    t_survey (uid, name, description)
+    t_survey (name, description)
 VALUES
-    ('ktMvqPwXhO', 'Test Survey', 'Deskripsi');
+    ('Test Survey', 'Deskripsi');
 
 INSERT INTO
     t_survey_questions (survey_id, question)
 VALUES
-    (1, 'Apakah kamu puas dalam aplikasi kami?');
+    (
+        'insert UUID from t_survey.id',
+        'Apakah kamu puas dalam aplikasi kami?'
+    );
 
 INSERT INTO
     t_survey_answers (question_id, answer)
 VALUES
+    (1, 'Sangat puas'),
+    (1, 'Cukup puas'),
+    (1, 'Biasa saja'),
+    (1, 'Tidak puas'),
     (1, 'Sangat tidak puas');
 
 INSERT INTO
