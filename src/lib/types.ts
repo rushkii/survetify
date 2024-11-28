@@ -4,6 +4,7 @@ export interface User {
 }
 
 export interface Survey {
+  id: string;
   name: string;
   description: string;
 }

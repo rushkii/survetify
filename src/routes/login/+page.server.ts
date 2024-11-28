@@ -4,10 +4,17 @@ import { generateAccount, jwt, setCookie } from '$lib/authentication';
 
 export const load: PageServerLoad = async ({ cookies }) => {
   const token = cookies.get('survetify-session');
-  if (!token) return {};
+  const guest = cookies.get('survetify-usr');
+  const expired = cookies.get('survetify-expired');
 
-  const user = jwt.verify(token);
-  if (!user) return;
+  if (!token || !guest) {
+    if (expired === 'true') {
+      return { message: 'Please Login Again!' };
+    }
+    redirect(302, '/login');
+  }
+
+  if (!token || !guest) return {};
 
   redirect(302, '/');
 };
@@ -17,6 +24,7 @@ export const actions = {
     const guest = generateAccount();
     const token = jwt.sign(guest);
 
+    setCookie('survetify-usr', JSON.stringify(guest), cookies);
     setCookie('survetify-session', token, cookies);
 
     redirect(302, '/');
