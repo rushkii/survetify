@@ -10,3 +10,13 @@ export const setCookie = (name: string, value: string, cookies: Cookies) => {
   });
   return true;
 };
+
+export const delCookie = (name: string, cookies: Cookies) => {
+  cookies.delete(name, {
+    path: '/',
+    httpOnly: true,
+    secure: !dev,
+    sameSite: 'lax'
+  });
+  return true;
+};
