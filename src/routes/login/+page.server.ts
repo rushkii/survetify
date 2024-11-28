@@ -1,7 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import { jwt, setCookie } from '$lib/authentication';
-import { generateAccount } from '$lib/authentication/account';
+import { generateAccount, jwt, setCookie } from '$lib/authentication';
 
 export const load: PageServerLoad = async ({ cookies }) => {
   const token = cookies.get('survetify-session');
