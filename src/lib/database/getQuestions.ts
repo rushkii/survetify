@@ -1,15 +1,18 @@
+import type { Answer, Question, QuestionRaw } from '$types';
 import { pool } from './connection';
 
-export const getQuestions = async (surveyId: string): Promise<unknown[]> => {
-  const { rows: questions } = await pool.query(
+export const getQuestions = async (surveyId: string): Promise<Question[]> => {
+  const { rows: questions }: { rows: QuestionRaw[] } = await pool.query(
     `
     SELECT
         sq.question,
-        ARRAY_AGG(sa.answer ORDER BY sa.id) AS answers
+        ARRAY_AGG(
+            '{ "id": ' || sa.id || ', "answer": "' || sa.answer || '" }'
+        ORDER BY sa.id) AS answers
     FROM
         t_survey_questions sq
     LEFT JOIN
-        t_survey_answers sa ON sq.id = sa.question_id
+        t_survey_answers sa ON sa.question_id = sq.id
     WHERE
         sq.survey_id = $1
     GROUP BY
@@ -19,5 +22,9 @@ export const getQuestions = async (surveyId: string): Promise<unknown[]> => {
   `,
     [surveyId]
   );
-  return questions;
+
+  return questions.map((e) => ({
+    ...e,
+    answers: e.answers.map<Answer>((e) => JSON.parse(e))
+  }));
 };

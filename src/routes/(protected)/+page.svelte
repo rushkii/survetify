@@ -4,7 +4,7 @@
   let { data }: { data: PageServerData } = $props();
 </script>
 
-<div class="flex h-full w-full flex-col items-center justify-center space-y-5">
+<div class="flex h-full w-full max-w-5xl flex-col items-center justify-center space-y-5">
   <div class="text-3xl font-bold">List of Survey</div>
 
   <div class="w-full">
@@ -13,9 +13,9 @@
         <li class="w-full">
           <a
             href="/survey/{s.id}"
-            class="h-full w-full bg-neutral-400 transition-colors duration-200 hover:bg-neutral-600"
+            class="flex h-full w-full flex-col gap-y-3 rounded-lg bg-neutral-200 p-3 transition-colors duration-200 hover:bg-neutral-300"
           >
-            <h3>{s.name}</h3>
+            <h3 class="text-3xl font-bold">{s.name}</h3>
             <div>{s.description}</div>
           </a>
         </li>

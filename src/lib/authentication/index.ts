@@ -1,5 +1,5 @@
-import { generateAccount } from './account';
-import { delCookie, setCookie } from './cookies';
+import * as account from './account';
 import * as jwt from './jwt';
+import * as cookie from './cookies';
 
-export { jwt, setCookie, delCookie, generateAccount };
+export { cookie, jwt, account };
