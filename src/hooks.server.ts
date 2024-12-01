@@ -1,7 +1,7 @@
 import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
 import { i18n } from '$lib/i18n';
 import { sequence } from '@sveltejs/kit/hooks';
-import { cookie, jwt } from '$auth';
+import { sessions, jwt } from '$auth';
 import { errorMessage } from '$stores';
 
 type EventType = RequestEvent<Partial<Record<string, string>>, string | null>;
@@ -12,7 +12,7 @@ const setUserLocals = (token: string, event: EventType) => {
 };
 
 const auth = (async ({ event, resolve }) => {
-  const token = cookie.get(event.cookies);
+  const token = sessions.get(event.cookies);
 
   if (event.route.id?.startsWith('/(protected)')) {
     errorMessage.set(null);

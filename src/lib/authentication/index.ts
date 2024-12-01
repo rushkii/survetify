@@ -1,5 +1,5 @@
 import * as account from './account';
 import * as jwt from './jwt';
-import * as cookie from './cookies';
+import * as sessions from './sessions';
 
-export { cookie, jwt, account };
+export { sessions, jwt, account };

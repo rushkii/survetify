@@ -1,13 +1,13 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { cookie, account, jwt } from '$auth';
+import { sessions, account, jwt } from '$auth';
 
 export const actions = {
   default: async ({ cookies }) => {
     const guest = account.create();
     const token = jwt.createToken(guest);
 
-    cookie.set(token, cookies);
+    sessions.set(token, cookies);
 
     redirect(302, '/');
   }
