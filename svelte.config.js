@@ -17,7 +17,8 @@ const config = {
       $components: 'src/lib/components',
       $types: 'src/lib/types',
       $stores: 'src/lib/stores',
-      $auth: 'src/lib/authentication'
+      $auth: 'src/lib/authentication',
+      $server: 'src/lib/server'
     }
   },
 

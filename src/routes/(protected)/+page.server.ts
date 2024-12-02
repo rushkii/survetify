@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import * as db from '$lib/database';
+import { db } from '$server';
 
 export const load = (async () => {
   const survey = await db.getSurveyList();

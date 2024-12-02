@@ -1,8 +1,9 @@
 import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
 import { i18n } from '$lib/i18n';
 import { sequence } from '@sveltejs/kit/hooks';
-import { sessions, jwt } from '$auth';
+import { sessions } from '$auth';
 import { errorMessage } from '$stores';
+import { jwt } from '$server';
 
 type EventType = RequestEvent<Partial<Record<string, string>>, string | null>;
 

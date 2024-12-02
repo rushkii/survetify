@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { sessions, account, jwt } from '$auth';
+import { sessions, account } from '$auth';
+import { jwt } from '$server';
 
 export const actions = {
   default: async ({ cookies }) => {
