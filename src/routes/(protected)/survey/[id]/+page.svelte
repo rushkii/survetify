@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { PageServerData } from './$types';
-  let { data }: { data: PageServerData } = $props();
+  import type { PageData } from './$types';
+  let { data }: { data: PageData } = $props();
 
   const currentQuestion = data.questions[0];
 </script>
