@@ -1,3 +1,4 @@
 import { faker } from './faker';
+import * as transform from './transform';
 
-export { faker };
+export { faker, transform };
