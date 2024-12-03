@@ -1,22 +1,24 @@
 <script lang="ts">
+  import ModalQuestion from '$components/ModalQuestion.svelte';
   import type { PageData } from './$types';
   let { data }: { data: PageData } = $props();
 
   const currentQuestion = data.questions[0];
 </script>
 
-<div>
-  <div>
-    <p>{currentQuestion.question}</p>
-  </div>
+<ModalQuestion required>
+  {#snippet header()}
+    Question 1 of 1
+  {/snippet}
+  {#snippet question()}
+    {@html currentQuestion.question}
+  {/snippet}
   <div>
     {#each currentQuestion.answers as { id, answer } (id)}
-      <div>
-        <label for="answer-{id}" class="cursor-pointer">
-          <input type="checkbox" id="answer-{id}" value={id} class="cursor-pointer" />
-          {answer}
-        </label>
-      </div>
+      <label for="answer-{id}" class="flex cursor-pointer gap-x-2">
+        <input type="checkbox" id="answer-{id}" value={id} class="cursor-pointer" />
+        {@html answer}
+      </label>
     {/each}
   </div>
-</div>
+</ModalQuestion>
