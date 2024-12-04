@@ -35,6 +35,8 @@ const auth = (async ({ event, resolve }) => {
       setUserLocals(token, event);
       redirect(302, '/');
     }
+  } else {
+    redirect(302, '/');
   }
 
   return await resolve(event);
