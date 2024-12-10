@@ -23,7 +23,6 @@
           <li class="w-full" transition:fly={{ x: -100, duration: 1000 }}>
             <element.Anchor
               href="/survey/{s.id}"
-              data-sveltekit-preload-data="tap"
               class="flex h-full w-full flex-col gap-y-3 rounded-lg bg-neutral-200 p-3 transition-colors duration-200 hover:bg-neutral-300"
             >
               <h3 class="text-3xl font-bold">{s.name}</h3>
